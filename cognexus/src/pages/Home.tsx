@@ -45,7 +45,7 @@ const HomePage = () => {
               <p className="mt-4 text-gray-600">
                 Engage in our comprehensive brain training programs designed to enhance your cognitive abilities.
               </p>
-              <a href="/training-paradigms" className="mt-4 inline-block px-6 py-2 bg-gray-600 text-white text-lg font-semibold rounded hover:bg-gray-800 transition duration-300">
+              <a href="/tasks" className="mt-4 inline-block px-6 py-2 bg-gray-600 text-white text-lg font-semibold rounded hover:bg-gray-800 transition duration-300">
                 Explore Training
               </a>
             </div>

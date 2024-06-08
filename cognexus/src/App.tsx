@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/Home'; // Assuming the 'Home' component is located in './pages/Home'
-import Navbar from './components/Navbar'; // Assuming the 'Home' component is located in './pages/Home'
+import {Home, Tasks} from './pages'; 
+import Navbar from './components/Navbar'; 
 import './index.css'
 
 export const DataContext = React.createContext({});
@@ -17,6 +17,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/tasks" element={<Tasks />} />
         </Routes>
       </BrowserRouter>
       </DataContext.Provider>
