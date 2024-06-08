@@ -1,5 +1,10 @@
 // src/components/HomePage.tsx
 import React from 'react';
+import { IoGameController } from "react-icons/io5";
+import { BsClipboard2DataFill } from "react-icons/bs";
+import { FaBrain } from "react-icons/fa6";
+import { GiNetworkBars } from "react-icons/gi";
+import { GrUserExpert } from "react-icons/gr";
 
 const HomePage = () => {
   return (
@@ -12,28 +17,25 @@ const HomePage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-800">
                 Welcome to <span className="text-green-500">NeuroNexus</span>
               </h1>
-              <p className="mt-6 text-lg md:text-xl text-gray-600">
+              <p className="my-6 text-lg md:text-xl text-gray-600">
                 Enhance your brain power with scientifically proven brain training exercises and comprehensive neuroscience data reviews.
               </p>
               <a href="/brain-training" className="mt-8 px-8 py-3 bg-green-500 text-white text-lg font-semibold rounded hover:bg-green-600 transition duration-300">
                 Get Started
               </a>
             </div>
-            <div className="mt-8 md:mt-0 md:w-1/2">
-              <img src="/hero-image.png" alt="Brain Training" className="w-full h-auto" />
-            </div>
           </div>
         </div>
       </section>
 
       {/* Juncture Section */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-6 text-center">
+      <section className="bg-white py-8">
+        <div className="mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">Choose Your Path</h2>
-          <div className="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2">
-            <div className="bg-gray-100 shadow-md rounded-lg p-6 hover:bg-gray-200 transition duration-300">
+          <div className="mt-8 flex flex-row md:flex-col justify-center">
+            <div className="bg-gray-100 shadow-md rounded-lg p-6 hover:bg-gray-200 transition duration-300 flex-1 md:max-w-md">
               <div className="flex justify-center mb-4">
-                <img src="/training-icon.png" alt="Training Paradigms" className="h-16 w-16" />
+                <IoGameController className="h-16 w-16" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">Training Paradigms</h3>
               <p className="mt-4 text-gray-600">
@@ -43,9 +45,9 @@ const HomePage = () => {
                 Explore Training
               </a>
             </div>
-            <div className="bg-gray-100 shadow-md rounded-lg p-6 hover:bg-gray-200 transition duration-300">
+            <div className="bg-gray-100 shadow-md rounded-lg p-6 hover:bg-gray-200 transition duration-300 flex-1 md:max-w-md">
               <div className="flex justify-center mb-4">
-                <img src="/studies-icon.png" alt="Studies" className="h-16 w-16" />
+                <BsClipboard2DataFill className="h-16 w-16" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">Studies</h3>
               <p className="mt-4 text-gray-600">
@@ -66,7 +68,7 @@ const HomePage = () => {
           <div className="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <div className="bg-white shadow-md rounded-lg p-6">
               <div className="flex justify-center mb-4">
-                <img src="/feature-icon-1.png" alt="Feature 1" className="h-16 w-16" />
+                <FaBrain className="h-16 w-16" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">Personalized Brain Training</h3>
               <p className="mt-4 text-gray-600">
@@ -75,7 +77,7 @@ const HomePage = () => {
             </div>
             <div className="bg-white shadow-md rounded-lg p-6">
               <div className="flex justify-center mb-4">
-                <img src="/feature-icon-2.png" alt="Feature 2" className="h-16 w-16" />
+                <GiNetworkBars className="h-16 w-16" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">Data-Driven Insights</h3>
               <p className="mt-4 text-gray-600">
@@ -84,7 +86,7 @@ const HomePage = () => {
             </div>
             <div className="bg-white shadow-md rounded-lg p-6">
               <div className="flex justify-center mb-4">
-                <img src="/feature-icon-3.png" alt="Feature 3" className="h-16 w-16" />
+                <GrUserExpert className="h-16 w-16" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800">Expert Guidance</h3>
               <p className="mt-4 text-gray-600">
@@ -98,8 +100,8 @@ const HomePage = () => {
       {/* Call to Action Section */}
       <section className="bg-green-500 py-20">
         <div className="container mx-auto px-6 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-semibold">Join NeuroNexus Today</h2>
-          <p className="mt-4 text-lg md:text-xl">
+          <h2 className="text-4xl font-semibold">Join NeuroNexus Today</h2>
+          <p className="my-8 text-lg md:text-xl">
             Unlock your full potential with our brain training programs and data reviews.
           </p>
           <a href="/signup" className="mt-8 px-8 py-3 bg-white text-green-500 text-lg font-semibold rounded hover:bg-gray-100 transition duration-300">
