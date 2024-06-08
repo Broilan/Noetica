@@ -1,0 +1,28 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-remove::-webkit-scrollbar {
+  display: none;
+}
+
+#dropdown-box::-webkit-scrollbar {
+  width: 4px;
+}
+
+#dropdown-box::-webkit-scrollbar-thumb {
+  background: gray;
+}
