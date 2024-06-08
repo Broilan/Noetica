@@ -5,6 +5,7 @@ import { BsClipboard2DataFill } from "react-icons/bs";
 import { FaBrain } from "react-icons/fa6";
 import { GiNetworkBars } from "react-icons/gi";
 import { GrUserExpert } from "react-icons/gr";
+import logo from '../assets/NeuroNexusLogo.webp';
 
 const HomePage = () => {
   return (
@@ -14,13 +15,16 @@ const HomePage = () => {
         <div className="container mx-auto px-6 text-center md:text-left">
           <div className="md:flex md:justify-between">
             <div className="md:w-1/2">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-800">
-                Welcome to <span className="text-green-500">NeuroNexus</span>
-              </h1>
+            <div className='flex flex-col items-center'>
+            <img src={logo} className="h-20 w-20" />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800">
+              NeuroNexus
+            </h1>
+            </div>
               <p className="my-6 text-lg md:text-xl text-gray-600">
-                Enhance your brain power with scientifically proven brain training exercises and comprehensive neuroscience data reviews.
+                Dubito, ergo cogito, ergo sum.
               </p>
-              <a href="/brain-training" className="mt-8 px-8 py-3 bg-green-500 text-white text-lg font-semibold rounded hover:bg-green-600 transition duration-300">
+              <a href="/brain-training" className="mt-8 px-8 py-3 bg-gray-600 text-white text-lg font-semibold rounded hover:bg-green-700 transition duration-300">
                 Get Started
               </a>
             </div>
@@ -41,7 +45,7 @@ const HomePage = () => {
               <p className="mt-4 text-gray-600">
                 Engage in our comprehensive brain training programs designed to enhance your cognitive abilities.
               </p>
-              <a href="/training-paradigms" className="mt-4 inline-block px-6 py-2 bg-green-500 text-white text-lg font-semibold rounded hover:bg-green-600 transition duration-300">
+              <a href="/training-paradigms" className="mt-4 inline-block px-6 py-2 bg-gray-600 text-white text-lg font-semibold rounded hover:bg-gray-800 transition duration-300">
                 Explore Training
               </a>
             </div>
@@ -53,7 +57,7 @@ const HomePage = () => {
               <p className="mt-4 text-gray-600">
                 Dive into the latest neuroscience research and reviews to stay updated with cutting-edge findings.
               </p>
-              <a href="/studies" className="mt-4 inline-block px-6 py-2 bg-green-500 text-white text-lg font-semibold rounded hover:bg-green-600 transition duration-300">
+              <a href="/studies" className="mt-4 inline-block px-6 py-2 bg-gray-600 text-white text-lg font-semibold rounded hover:bg-gray-800 transition duration-300">
                 Explore Studies
               </a>
             </div>
@@ -98,13 +102,13 @@ const HomePage = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="bg-green-500 py-20">
+      <section className="bg-gray-600 py-20">
         <div className="container mx-auto px-6 text-center text-white">
           <h2 className="text-4xl font-semibold">Join NeuroNexus Today</h2>
           <p className="my-8 text-lg md:text-xl">
             Unlock your full potential with our brain training programs and data reviews.
           </p>
-          <a href="/signup" className="mt-8 px-8 py-3 bg-white text-green-500 text-lg font-semibold rounded hover:bg-gray-100 transition duration-300">
+          <a href="/signup" className="mt-8 px-8 py-3 bg-white text-gray-600 text-lg font-semibold rounded hover:bg-gray-100 transition duration-300">
             Sign Up Now
           </a>
         </div>
