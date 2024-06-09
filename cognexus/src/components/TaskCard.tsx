@@ -4,10 +4,11 @@ interface TaskCardProps {
     taskName: string;
     description: string;
     imageUrl: string;
+    tags: string[];
 }
 
 
-const TaskCard: React.FC<TaskCardProps> = ({ taskName, description, imageUrl }) => {
+const TaskCard: React.FC<TaskCardProps> = ({ taskName, description, imageUrl, tags }) => {
     return (
         <div className="max-w-sm rounded-xl shadow-xl bg-white border border-gray-300 m-4">
           <img src={imageUrl} alt={taskName} />
@@ -15,6 +16,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ taskName, description, imageUrl }) 
 
             <div className="flex justify-between">
                 <div className="font-bold text-2xl mb-2 text-gray-800">{taskName}</div>
+                <div className='bg-purple-200 px-3 py-1 mr-2 mb-2 rounded-full font-bold text-purple-700 text-sm'>{tags[0]}</div>
+                <div className='bg-red-200 px-3 py-1 mr-2 mb-2 rounded-full font-bold text-red-700 text-sm'>{tags[1]}</div>
                 <button className="font-bold text-gray-500 pb-2">?</button>
             </div>
 

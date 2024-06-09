@@ -7,14 +7,14 @@ const Tasks = () => {
 
 
     const cognitiveTrainingParadigms = [
-        { id: 1, name: 'Paradigm 1', description: loremIpsum, imageUrl: brainImg},
-        { id: 2, name: 'Paradigm 2', description: loremIpsum, imageUrl: brainImg},
-        { id: 3, name: 'Paradigm 3', description: loremIpsum, imageUrl: brainImg},
-        { id: 4, name: 'Paradigm 4', description: loremIpsum, imageUrl: brainImg},
-        { id: 5, name: 'Paradigm 5', description: loremIpsum, imageUrl: brainImg},
-        { id: 6, name: 'Paradigm 6', description: loremIpsum, imageUrl: brainImg},
-        { id: 7, name: 'Paradigm 7', description: loremIpsum, imageUrl: brainImg},
-        { id: 8, name: 'Paradigm 8', description: loremIpsum, imageUrl: brainImg},
+        { id: 1, name: 'Paradigm 1', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 2, name: 'Paradigm 2', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 3, name: 'Paradigm 3', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 4, name: 'Paradigm 4', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 5, name: 'Paradigm 5', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 6, name: 'Paradigm 6', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 7, name: 'Paradigm 7', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: 8, name: 'Paradigm 8', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
     ];
 
     return (
@@ -24,7 +24,7 @@ const Tasks = () => {
 
             {cognitiveTrainingParadigms.map(paradigm => (
 
-                <TaskCard taskName={paradigm.name} description={paradigm.description} imageUrl={brainImg}></TaskCard>
+                <TaskCard taskName={paradigm.name} description={paradigm.description} imageUrl={brainImg} tags={paradigm.tags}></TaskCard>
 
             ))}
 
