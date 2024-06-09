@@ -15,12 +15,11 @@ const Tasks = () => {
         { id: 6, name: 'Paradigm 6', description: loremIpsum, imageUrl: brainImg},
         { id: 7, name: 'Paradigm 7', description: loremIpsum, imageUrl: brainImg},
         { id: 8, name: 'Paradigm 8', description: loremIpsum, imageUrl: brainImg},
-
-        // Add more paradigms as needed
     ];
 
     return (
-
+        <>
+        <h1 className='text-4xl font-bold text-gray-800 text-center my-10'>Training Paradigms</h1>
         <div className='flex flex-wrap justify-between mx-20 sm:mx-0'>
 
             {cognitiveTrainingParadigms.map(paradigm => (
@@ -30,6 +29,7 @@ const Tasks = () => {
             ))}
 
         </div>
+        </>
 
     );
 };
