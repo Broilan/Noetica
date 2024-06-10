@@ -11,6 +11,7 @@ module.exports = {
           secondary: "#e5e7eb",
           tertiary: "#E6E2DD",
           four: "#F2F2F2",
+          five: "rgba(18, 18, 18, 1)",
           dimWhite: "rgba(255, 255, 255, 0.7)",
           dimBlue: "rgba(9, 151, 124, 0.1)",
           blues: '#aeecfc',

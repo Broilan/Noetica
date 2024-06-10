@@ -11,12 +11,12 @@ const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gray-100 py-20">
+      <section className="py-20">
         <div className="container mx-auto px-6 text-center md:text-left">
           <div className="md:flex md:justify-between">
             <div className="md:w-1/2">
             <div className='flex flex-col items-center'>
-            <img src={logo} className="h-20 w-20" />
+            <img src={logo} className="h-20 rounded-full w-20" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800">
               NeuroNexus
             </h1>
@@ -33,7 +33,7 @@ const HomePage = () => {
       </section>
 
       {/* Juncture Section */}
-      <section className="bg-white py-8">
+      <section className=" py-8">
         <div className="mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">Choose Your Path</h2>
           <div className="mt-8 flex flex-row md:flex-col justify-center">
