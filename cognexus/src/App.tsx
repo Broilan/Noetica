@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Home, Tasks, Nback} from './pages'; 
-import Navbar from './components/Navbar'; 
+import {Navbar, Footer} from './components'; 
 import './index.css'
 
 export const DataContext = React.createContext({});
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/tasks/n-back" element={<Nback/>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
       </DataContext.Provider>
     </>

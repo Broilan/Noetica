@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import logo from '../assets/NeuroNexusLogo.webp';
 import { TfiAlignJustify } from "react-icons/tfi";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
