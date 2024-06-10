@@ -7,7 +7,7 @@ const Tasks = () => {
 
 
     const cognitiveTrainingParadigms = [
-        { id: 1, name: 'Paradigm 1', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
+        { id: "n-back", name: 'Paradigm 1', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
         { id: 2, name: 'Paradigm 2', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
         { id: 3, name: 'Paradigm 3', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},
         { id: 4, name: 'Paradigm 4', description: loremIpsum, imageUrl: brainImg, tags: ['Memory', 'Attention', 'Problem Solving']},

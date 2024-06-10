@@ -18,7 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tasks" element={<Tasks />} />
-          <Route path="/tasks/1" element={<Nback n={2} />} />
+          <Route path="/tasks/n-back" element={<Nback/>} />
         </Routes>
       </BrowserRouter>
       </DataContext.Provider>
