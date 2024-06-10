@@ -1,14 +1,15 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 interface TaskCardProps {
     taskName: string;
     description: string;
     imageUrl: string;
     tags: string[];
+    taskId: number;
 }
 
 
-const TaskCard: React.FC<TaskCardProps> = ({ taskName, description, imageUrl, tags }) => {
+const TaskCard: React.FC<TaskCardProps> = ({ taskName, description, imageUrl, tags, taskId }) => {
     return (
         <div className="max-w-sm rounded-xl shadow-xl bg-white border border-gray-300 m-4">
           <img src={imageUrl} alt={taskName} />
@@ -25,9 +26,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ taskName, description, imageUrl, ta
 
           </div>
           <div className="px-6 pt-4 pb-2">
-            <a href="/TaskPage">
-            <button href="/TaskPage" className="bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700 mr-2 mb-2">Begin</button>
-            </a>
+            <Link to={`/tasks/${taskId}`}>
+            <button className="bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700 mr-2 mb-2">Begin</button>
+            </Link>
           </div>
         </div>
       );

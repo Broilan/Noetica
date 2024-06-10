@@ -24,7 +24,7 @@ const Tasks = () => {
 
             {cognitiveTrainingParadigms.map(paradigm => (
 
-                <TaskCard taskName={paradigm.name} description={paradigm.description} imageUrl={brainImg} tags={paradigm.tags}></TaskCard>
+                <TaskCard taskId={paradigm.id} taskName={paradigm.name} description={paradigm.description} imageUrl={brainImg} tags={paradigm.tags}></TaskCard>
 
             ))}
 
