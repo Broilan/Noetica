@@ -4,6 +4,7 @@ import { GaborPatch } from '../../components';
 interface settings {  
   nValue: number;
   prefixValue: number;
+  iSInterval: number;
   audio?: string[];
   visual?: string[];
   tactile?: string[];
@@ -16,6 +17,9 @@ const reducer = (state: settings, action: any) => {
 
     case 'prefixValue':
       return { ...state, prefixValue: action.value };
+
+    case 'iSInterval':
+      return { ...state, iSInterval: action.value };  
 
     case 'audio':
       return { ...state, audio: action.value };
@@ -36,6 +40,7 @@ const Nback: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, {
     nValue: 1,
     prefixValue: 2,
+    iSInterval: 2,
     audio: [],
     visual: [],
     tactile: []
@@ -118,7 +123,7 @@ const Nback: React.FC = () => {
 
 
       <div className="mb-4">
-        <label htmlFor="prefixValue" className="block text-sm font-medium text-gray-700 mb-1">Prefix</label>
+        <label htmlFor="prefixValue" className="block text-md font-bold mb-1">Prefix</label>
         <input
           type="number"
           min="1"
@@ -131,7 +136,7 @@ const Nback: React.FC = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="nValue" className="block text-sm font-medium text-gray-700 mb-1">N Value</label>
+        <label htmlFor="nValue" className="block text-md font-bold mb-1">N Value</label>
         <input
           type="number"
           id="nValue"
@@ -140,6 +145,19 @@ const Nback: React.FC = () => {
           className="w-full border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
         />
       </div>  
+
+      <div className="mb-4">
+        <label htmlFor="iSInterval" className="block text-md font-bold mb-1">Interstimulus Interval (s)</label>
+        <input
+          type="number"
+          id="iSInterval"
+          min={1}
+          max={5}
+          value={state.iSInterval}
+          onChange={(e) => dispatch({ type: 'iSInterval', value: e.target.value })}
+          className="w-full border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+      </div> 
 
       <div className='flex flex-col space-y-4 mb-2'>
       <div>
