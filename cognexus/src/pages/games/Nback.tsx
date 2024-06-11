@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
+import { GaborPatch } from '../../components';
 
 interface settings {  
   nValue: number;
@@ -40,7 +41,7 @@ const Nback: React.FC = () => {
     tactile: []
   });
 
-  const checkStimuli = ({type, value}) => {
+  const checkStimuli = ({type, value}: any) => {
     switch (value.target.value) {
       case "audio":
         if (value.target.checked) {
@@ -85,7 +86,13 @@ const Nback: React.FC = () => {
       <h1 className='text-4xl font-bold text-black text-center my-10'>{state.prefixValue}-{state.nValue}-Back</h1>
 
       <div className={`grid grid-cols-3 grid-3 h-full `}>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+        <GaborPatch
+        frequency={6}
+        orientation={45}
+        phase={5}
+        size={100}
+      /></div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
