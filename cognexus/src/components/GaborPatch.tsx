@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface GaborPatchProps {
   frequency: number;
   orientation: number;
-  phase: number;
+  initialPhase: number;
   size: number;
+  speed: number; // Speed of phase change
 }
 
-const GaborPatch: React.FC<GaborPatchProps> = ({ frequency, orientation, phase, size }) => {
+const GaborPatch: React.FC<GaborPatchProps> = ({ frequency, orientation, initialPhase, size, speed }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [phase, setPhase] = useState(initialPhase);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -44,6 +46,19 @@ const GaborPatch: React.FC<GaborPatchProps> = ({ frequency, orientation, phase, 
       }
     }
   }, [frequency, orientation, phase, size]);
+
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const animate = () => {
+      setPhase((prev) => prev + speed);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [speed]);
 
   return <canvas ref={canvasRef} width={size} height={size} className="mx-auto my-4" />;
 };
