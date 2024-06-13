@@ -1,6 +1,6 @@
 // src/components/Navbar.tsx
 import React, { useState } from 'react';
-import logo from '../assets/NeuroNexusLogo.webp';
+import logo from '../../assets/NeuroNexusLogo.webp';
 import { TfiAlignJustify } from "react-icons/tfi";
 
 const Navbar: React.FC = () => {
