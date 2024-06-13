@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { visualData } from '../data/data';
+import { visualData } from '../data/visualData';
 
 const GaborPatch: React.FC = () => {
   const gaborParams = useRef(visualData.gabor[Math.floor(Math.random() * visualData.gabor.length)]);

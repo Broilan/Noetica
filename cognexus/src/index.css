@@ -26,3 +26,76 @@ body::-webkit-scrollbar {
 #dropdown-box::-webkit-scrollbar-thumb {
   background: gray;
 }
+
+/* Shapes */
+.trapezoid {
+  width: 100px;
+  height: 0;
+  border-bottom: 50px solid blue;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid blue;
+}
+
+.hexagon {
+  width: 100px;
+  height: 55px;
+  background-color: green;
+  position: relative;
+  margin: 27.5px 0;
+}
+
+.hexagon::before,
+.hexagon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.hexagon::before {
+  bottom: 100%;
+  border-bottom: 27.5px solid green;
+}
+
+.hexagon::after {
+  top: 100%;
+  width: 0;
+  border-top: 27.5px solid green;
+}
+
+.heptagon {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+}
+
+.octagon {
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.nonagon {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  clip-path: polygon(50% 0%, 80% 10%, 100% 40%, 90% 70%, 60% 100%, 40% 100%, 10% 70%, 0% 40%, 20% 10%);
+}
+
+.decagon {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  clip-path: polygon(50% 0%, 75% 5%, 90% 20%, 95% 40%, 90% 60%, 75% 80%, 50% 100%, 25% 80%, 10% 60%, 5% 40%, 10% 20%, 25% 5%);
+}

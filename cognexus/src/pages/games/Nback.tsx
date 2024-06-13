@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { GaborPatch } from '../../components';
+import { visualData } from '../../data/visualData';
 
 interface settings {  
   nValue: number;
@@ -79,6 +80,7 @@ const Nback: React.FC = () => {
     console.log("after", state.visual)
     console.log("after", state.tactile)
   }
+  const randomShape = visualData.shapes[Object.keys(visualData.shapes)[Math.floor(Math.random() * 6)]] as Element;
 
 
   return (
@@ -91,10 +93,8 @@ const Nback: React.FC = () => {
       <h1 className='text-4xl font-bold text-black text-center my-10'>{state.prefixValue}-{state.nValue}-Back</h1>
 
       <div className={`grid grid-cols-3 grid-3 h-full `}>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
-        <GaborPatch />
-      </div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><GaborPatch /></div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>{randomShape}</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
