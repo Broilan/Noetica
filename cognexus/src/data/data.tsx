@@ -33,11 +33,51 @@ const audiologicalData = {
     ]
 };
 
-const visualData = {
+export const visualData = {
     highlight: undefined,
 
-    gabor: [ { size: 1, orientation: 0 }, { size: 1, orientation: 45 }, { size: 1, orientation: 90 }, { size: 1, orientation: 135 },
-        
+    gabor: [ {  
+        frequency: 5,
+        orientation:0,
+        initialPhase: 5,
+        size: 100,
+        speed: 5,
+    }, 
+    {  
+        frequency: 5,
+        orientation:45,
+        initialPhase: 5,
+        size: 100,
+        speed: 5,
+    }, 
+    {  
+        frequency: 5,
+        orientation:90,
+        initialPhase: 5,
+        size: 100,
+        speed: 5,
+    }, 
+    {  
+        frequency: 5,
+        orientation:135,
+        initialPhase: 5,
+        size: 100,
+        speed: 5,
+    }, 
+    {  
+        frequency: 5,
+        orientation:180,
+        initialPhase: 5,
+        size: 100,
+        speed: 5,
+    }, 
+    {  
+        frequency: 5,
+        orientation:225,
+        initialPhase: 5,
+        size: 100,
+        speed: 5,
+    }, 
     ],
 
     shapes: [

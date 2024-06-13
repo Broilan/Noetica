@@ -1,14 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { visualData } from '../data/data';
 
-interface GaborPatchProps {
-  frequency: number;
-  orientation: number;
-  initialPhase: number;
-  size: number;
-  speed: number; // Speed of phase change
-}
-
-const GaborPatch: React.FC<GaborPatchProps> = ({ frequency, orientation, initialPhase, size, speed }) => {
+const GaborPatch: React.FC = () => {
+  const { frequency, orientation, initialPhase, size, speed } = visualData.gabor[0];
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [phase, setPhase] = useState(initialPhase);
 
