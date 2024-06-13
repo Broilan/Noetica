@@ -1,4 +1,3 @@
-import React from 'react';
 import TaskCard from '../components/TaskCard';
 import brainImg from '../assets/brain.webp';
 const Tasks = () => {

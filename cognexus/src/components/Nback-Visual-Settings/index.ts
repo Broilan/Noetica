@@ -1,6 +1,6 @@
-export { default as GaborPatch } from "./GaborPatch";
-export { default as Numbers } from "./Numbers";
-export { default as Letters } from "./Letters";
-export { default as Phonemes } from "./Phonemes";
-export { default as Shapes } from "./Shapes";
-export { default as Random } from "./Random";
+export { default as GaborPatch } from "./GaborPatch-Visual";
+export { default as Numbers } from "./Numbers-Visual";
+export { default as Letters } from "./Letters-Visual";
+export { default as Phonemes } from "./Phonemes-Visual";
+export { default as Shapes } from "./Shapes-Visual";
+export { default as Random } from "./Random-Visual";
