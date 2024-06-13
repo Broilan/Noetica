@@ -84,6 +84,7 @@ const Nback: React.FC = () => {
       default:
         break;
     } 
+    console.log(state);
   }
 
 

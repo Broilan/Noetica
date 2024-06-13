@@ -3,7 +3,7 @@ import {GameContext} from '../pages/games/Nback';
 
 const NbackSettings: React.FC = () => {
     const {checkStimuli, state, dispatch} = useContext(GameContext);
-    
+
 return (
 <div className="bg-gray-400 shadow-2xl rounded-lg p-6 w-full max-w-sm mx-auto mt-10">
       <h2 className="text-2xl font-semibold mb-4 text-black">Settings</h2>
@@ -53,7 +53,7 @@ return (
           id="duration"
           min={30}
           max={180}
-          value={state.iSInterval}
+          value={state.duration}
           onChange={(e) => dispatch({ type: 'duration', value: e.target.value })}
           className="w-full border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500"
         />
@@ -61,15 +61,14 @@ return (
     {/* PREFIX, N-VALUE, INTERSTIMULUS INTERVAL, AND DURATION INPUTS END */}
 
       <div className='flex flex-col space-y-4 mb-2'>
+
+     {/* AUDIOLOGICAL STIMULI INPUTS */}
       <div>
       <h1 className='font-bold'>Audiological Stimuli</h1>
 
-      <div className='flex space-x-2 flex-wrap'>
 
-
-      {/* AUDIOLOGICAL STIMULI INPUTS */}
+      <form onChange={(e) => checkStimuli({ type: 'audio', value: e })} className='flex space-x-2 flex-wrap'>
       <input
-      onChange={(e) => checkStimuli({ type: 'audio', value: e })} 
       type="checkbox" 
       value="audio" 
       name="Words" 
@@ -77,7 +76,6 @@ return (
       <label htmlFor="Words" className="block text-sm font-medium text-gray-700 mb-1">Words</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'audio', value: e })}
       type="checkbox" 
       value="audio" 
       name="Numbers" 
@@ -85,7 +83,6 @@ return (
       <label htmlFor="Numbers" className="block text-sm font-medium text-gray-700 mb-1">Numbers</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'audio', value: e })}
       type="checkbox" 
       value="Letters" 
       name="Letters" 
@@ -94,7 +91,6 @@ return (
       <label htmlFor="Numbers" className="block text-sm font-medium text-gray-700 mb-1">Letters</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'audio', value: e })}
       type="checkbox" 
       value="audio" 
       name="Phonemes" 
@@ -102,14 +98,12 @@ return (
       <label htmlFor="Phonemes" className="block text-sm font-medium text-gray-700 mb-1">Phonemes</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'audio', value: e })}
       type="checkbox" 
       value="audio" 
       name="Random" 
       id="Random" />
       <label htmlFor="Random" className="block text-sm font-medium text-gray-700 mb-1">Random</label>
-
-      </div>
+      </form>
 
       </div>
       {/* AUDIOLOGICAL STIMULI INPUTS END */}
@@ -118,10 +112,9 @@ return (
       <div>
       <h1 className='font-bold'>Visual Stimuli</h1>
 
-      <div className='flex space-x-2 flex-wrap'>
+      <form onChange={(e) => checkStimuli({ type: 'visual', value: e })} className='flex space-x-2 flex-wrap'>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Highlight" 
@@ -130,7 +123,6 @@ return (
       <label htmlFor="Highlight" className="block text-sm font-medium text-gray-700 mb-1">Highlight</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Gabor" 
@@ -138,7 +130,6 @@ return (
       <label htmlFor="Gabor" className="block text-sm font-medium text-gray-700 mb-1">Gabor</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Shapes" 
@@ -146,7 +137,6 @@ return (
       <label htmlFor="Shapes" className="block text-sm font-medium text-gray-700 mb-1">Shapes</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Phonemes" 
@@ -154,7 +144,6 @@ return (
       <label htmlFor="Phonemes" className="block text-sm font-medium text-gray-700 mb-1">Phonemes</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Numbers" 
@@ -162,7 +151,6 @@ return (
       <label htmlFor="Numbers" className="block text-sm font-medium text-gray-700 mb-1">Numbers</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Letters" 
@@ -170,14 +158,13 @@ return (
       <label htmlFor="Letters" className="block text-sm font-medium text-gray-700 mb-1">Letters</label>
 
       <input 
-      onChange={(e) => checkStimuli({ type: 'visual', value: e })}
       type="checkbox" 
       value="visual" 
       name="Random" 
       id="Random" />
       <label htmlFor="Random" className="block text-sm font-medium text-gray-700 mb-1">Random</label>
 
-      </div>
+      </form>
       </div>
       {/* VISUAL STIMULI INPUTS END */}
 
@@ -185,17 +172,16 @@ return (
       <div>
       <h1 className='font-bold'>Tactile Stimuli (mobile only)</h1>
 
-      <div className='flex space-x-2 flex-wrap'>
+      <form onChange={(e) => checkStimuli({ type: 'tactile', value: e })} className='flex space-x-2 flex-wrap'>
 
-      <input 
-      onChange={(e) => checkStimuli({ type: 'tactile', value: e })}
-      type="checkbox" 
-      value="tactile" 
-      name="Vibrations" 
-      id="Vibrations" />
-      <label htmlFor="Vibrations" className="block text-sm font-medium text-gray-700 mb-1">Vibrations</label>
+        <input 
+        type="checkbox" 
+        value="tactile" 
+        name="Vibrations" 
+        id="Vibrations" />
+        <label htmlFor="Vibrations" className="block text-sm font-medium text-gray-700 mb-1">Vibrations</label>
 
-      </div>
+      </form>
 
       </div>
       {/* TACTILE STIMULI INPUTS END */}
