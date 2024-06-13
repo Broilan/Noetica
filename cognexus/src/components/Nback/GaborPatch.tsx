@@ -1,8 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { visualData } from '../data/visualData';
 
+// Gabor parameter's types
+interface Gabor {
+  frequency: number;
+  orientation: number;
+  initialPhase: number;
+  size: number;
+  speed: number;
+}
+
+// Gabor parameters
+const gabors: Gabor[] = [
+  { frequency: 5, orientation: 0, initialPhase: 5, size: 100, speed: 5 },
+  { frequency: 5, orientation: 45, initialPhase: 5, size: 100, speed: 5 },
+  { frequency: 5, orientation: 90, initialPhase: 5, size: 100, speed: 5 },
+  { frequency: 5, orientation: 135, initialPhase: 5, size: 100, speed: 5 },
+  { frequency: 5, orientation: 180, initialPhase: 5, size: 100, speed: 5 },
+  { frequency: 5, orientation: 225, initialPhase: 5, size: 100, speed: 5 },
+]
+
+// Gabor patch component
 const GaborPatch: React.FC = () => {
-  const gaborParams = useRef(visualData.gabor[Math.floor(Math.random() * visualData.gabor.length)]);
+  const gaborParams = useRef(gabors[Math.floor(Math.random() * gabors.length)]);
   const { frequency, orientation, initialPhase, size, speed } = gaborParams.current;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);

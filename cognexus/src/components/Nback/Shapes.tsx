@@ -1,6 +1,5 @@
-// Shapes.tsx (or Shapes.js if not using TypeScript)
 import React from 'react';
-import '../index.css'
+import '../../index.css';
 
 // Define the shape components
 const Circle = () => <div className="w-24 h-24 bg-red-500 rounded-full"></div>;
@@ -14,7 +13,7 @@ interface Shapes {
   [key: string]: JSX.Element;
 }
 
-export const shapes: Shapes = {
+const shapes: Shapes = {
   circle: <Circle />,
   square: <Square />,
   triangle: <Triangle />,
@@ -23,4 +22,23 @@ export const shapes: Shapes = {
   heptagon: <Heptagon />,
 };
 
-export { Circle, Square, Triangle, Trapezoid, Hexagon, Heptagon };
+const ShapesComponent: React.FC = () => {
+  // Get the keys of the shapes object
+  const shapeKeys = Object.keys(shapes);
+
+  // Select a random key from the shapeKeys array
+  const randomKey = shapeKeys[Math.floor(Math.random() * shapeKeys.length)];
+
+  // Get the corresponding shape component
+  const RandomShape = shapes[randomKey];
+
+  return (
+    <div className="shape-container">
+      <div className="shape">
+        {RandomShape}
+      </div>
+    </div>
+  );
+};
+
+export default ShapesComponent;

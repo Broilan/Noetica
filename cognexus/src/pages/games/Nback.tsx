@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { GaborPatch } from '../../components';
-import { visualData } from '../../data/visualData';
+import { GaborPatch, Shapes, Letters, Phonemes, Random, Numbers } from '../../components/Nback';
 
 interface settings {  
   nValue: number;
@@ -80,7 +79,7 @@ const Nback: React.FC = () => {
     console.log("after", state.visual)
     console.log("after", state.tactile)
   }
-  const randomShape = visualData.shapes[Object.keys(visualData.shapes)[Math.floor(Math.random() * 6)]];
+
 
 
   return (
@@ -94,12 +93,12 @@ const Nback: React.FC = () => {
 
       <div className={`grid grid-cols-3 grid-3 h-full `}>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><GaborPatch /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>{randomShape}</div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Shapes /></div>
+      <div className='bg-gray-300 text-black border-gray-200 border-2 text-4xl flex justify-center items-center'></div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Letters /></div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Phonemes /></div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Numbers /></div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Random /></div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       </div>
