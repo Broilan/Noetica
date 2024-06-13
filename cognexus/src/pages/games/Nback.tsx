@@ -92,16 +92,11 @@ const Nback: React.FC = () => {
 
       <div className={`grid grid-cols-3 grid-3 h-full `}>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
-        <GaborPatch /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
-      <GaborPatch/>
+        <GaborPatch />
       </div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
-      <GaborPatch />
-      </div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
-      <GaborPatch />
-      </div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
+      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
       <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
