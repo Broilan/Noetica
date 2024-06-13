@@ -1,76 +1,43 @@
-import '../index.css'
+import { shapes } from './shapes';
 
-const Circle = () => <div className="w-24 h-24 bg-red-500 rounded-full"></div>;
-const Square = () => <div className="w-24 h-24 bg-blue-500"></div>;
-const Triangle = () => <div className="triangle"></div>;
-const Trapezoid = () => <div className="trapezoid"></div>;
-const Hexagon = () => <div className="hexagon"></div>;
-const Heptagon = () => <div className="heptagon"></div>;
+interface Gabor {
+    frequency: number;
+    orientation: number;
+    initialPhase: number;
+    size: number;
+    speed: number;
+  }
+  
+  interface VisualData {
+    highlight: any;
+    gabor: Gabor[];
+    shapes: { [key: string]: JSX.Element };
+    phonemes: string[];
+    numbers: number[];
+    letters: string[];
+    random: (string | number)[];
+  }
 
 // VISUAL DATA
-export const visualData = {
+export const visualData:VisualData = {
 
     // HIGHLIGHTS BG
     highlight: undefined,
 
     // GABOR DATA
-    gabor: [ {  
-        frequency: 5,
-        orientation:0,
-        initialPhase: 5,
-        size: 100,
-        speed: 5,
-    }, 
-    {  
-        frequency: 5,
-        orientation:45,
-        initialPhase: 5,
-        size: 100,
-        speed: 5,
-    }, 
-    {  
-        frequency: 5,
-        orientation:90,
-        initialPhase: 5,
-        size: 100,
-        speed: 5,
-    }, 
-    {  
-        frequency: 5,
-        orientation:135,
-        initialPhase: 5,
-        size: 100,
-        speed: 5,
-    }, 
-    {  
-        frequency: 5,
-        orientation:180,
-        initialPhase: 5,
-        size: 100,
-        speed: 5,
-    }, 
-    {  
-        frequency: 5,
-        orientation:225,
-        initialPhase: 5,
-        size: 100,
-        speed: 5,
-    }, 
-    ],
+  // GABOR DATA
+  gabor: [
+    { frequency: 5, orientation: 0, initialPhase: 5, size: 100, speed: 5 },
+    { frequency: 5, orientation: 45, initialPhase: 5, size: 100, speed: 5 },
+    { frequency: 5, orientation: 90, initialPhase: 5, size: 100, speed: 5 },
+    { frequency: 5, orientation: 135, initialPhase: 5, size: 100, speed: 5 },
+    { frequency: 5, orientation: 180, initialPhase: 5, size: 100, speed: 5 },
+    { frequency: 5, orientation: 225, initialPhase: 5, size: 100, speed: 5 },
+  ],
 
-    // SHAPES DATA
-    
-    shapes: {
-                circle: <Circle />,
-                square: <Square />,
-                triangle: <Triangle />,
-                trapezoid: <Trapezoid />,
-                hexagon: <Hexagon />,
-                heptagon: <Heptagon />,
-            },
+    // SHAPES DATA  
+    shapes,
                     
-
-
     // PHONEMES DATA
     phonemes: [
         "oo", "ow", "oy", "ar", "er", "or"

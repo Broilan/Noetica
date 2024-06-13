@@ -80,7 +80,7 @@ const Nback: React.FC = () => {
     console.log("after", state.visual)
     console.log("after", state.tactile)
   }
-  const randomShape = visualData.shapes[Object.keys(visualData.shapes)[Math.floor(Math.random() * 6)]] as Element;
+  const randomShape = visualData.shapes[Object.keys(visualData.shapes)[Math.floor(Math.random() * 6)]];
 
 
   return (
