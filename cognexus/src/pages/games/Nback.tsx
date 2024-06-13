@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useReducer } from 'react';
-import { GaborPatch, Shapes, Letters, Phonemes, Random, Numbers } from '../../components/Nback';
+import React, {useReducer } from 'react';
+import { GaborPatch, Shapes, Letters, Phonemes, Random, Numbers } from '../../components/Nback-Visual-Settings';
 
 interface settings {  
   nValue: number;
@@ -52,7 +52,7 @@ const Nback: React.FC = () => {
         if (value.target.checked) {
           dispatch({ type: 'audio', value: [...state.audio, value.target.name] });
         } else {
-          dispatch({ type: 'audio', value: state.audio.filter((item) => item !== value.target.name) });
+          dispatch({ type: 'audio', value: state.audio.filter((item: any) => item !== value.target.name) });
         }
         break;
 
@@ -60,7 +60,7 @@ const Nback: React.FC = () => {
         if (value.target.checked) {
           dispatch({ type: 'visual', value: [...state.visual, value.target.name] });
         } else {
-          dispatch({ type: 'visual', value: state.visual.filter((item) => item !== value.target.name) });
+          dispatch({ type: 'visual', value: state.visual.filter((item: any) => item !== value.target.name) });
         }        
         break;
 
@@ -68,16 +68,13 @@ const Nback: React.FC = () => {
           if (value.target.checked) {
           dispatch({ type: 'tactile', value: [...state.tactile, value.target.name] });
         } else {
-          dispatch({ type: 'tactile', value: state.tactile.filter((item) => item !== value.target.name) });
+          dispatch({ type: 'tactile', value: state.tactile.filter((item: any) => item !== value.target.name) });
         }        
         break;
 
       default:
         break;
     }
-    console.log("after", state.audio)
-    console.log("after", state.visual)
-    console.log("after", state.tactile)
   }
 
 
@@ -87,27 +84,53 @@ const Nback: React.FC = () => {
     <div className='flex items-center py-20'>
 
     {/* BEGIN GAMEBOARD COMPONENT*/}
-    <div className='flex flex-col rounded-2xl mx-auto shadow-2xl justify-between bg-gray-400 w-[30rem] h-[40rem] '>
-
+    <div className='flex flex-col rounded-2xl mx-auto shadow-2xl justify-between bg-gray-400 w-[30rem] h-[40rem]'>
       <h1 className='text-4xl font-bold text-black text-center my-10'>{state.prefixValue}-{state.nValue}-Back</h1>
-
-      <div className={`grid grid-cols-3 grid-3 h-full `}>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><GaborPatch /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Shapes /></div>
-      <div className='bg-gray-300 text-black border-gray-200 border-2 text-4xl flex justify-center items-center'></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Letters /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Phonemes /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Numbers /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'><Random /></div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
-      <div className='bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>1</div>
+      <div className="grid grid-cols-3 h-full">
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>
+            <GaborPatch />
+          </div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>
+            <Shapes />
+          </div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-gray-300 text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'></div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>
+            <Letters />
+          </div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>
+            <Phonemes />
+          </div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>
+            <Numbers />
+          </div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>
+            <Random />
+          </div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>1</div>
+        </div>
+        <div className='w-full h-full pb-full relative bg-white text-black border-gray-200 border-2 text-4xl flex justify-center items-center'>
+          <div className='absolute inset-0 flex justify-center items-center'>1</div>
+        </div>
       </div>
-
       <div className="flex justify-center">
-        <button className="bg-blue-200 rounded-full px-3 text-xl font-semibold text-blue-700 mr-2 my-2">Start</button>
-        <button className="bg-red-200 rounded-full px-3 text-xl font-semibold text-red-700 mr-2 my-2">Stop</button>
+        <button className="bg-gray-300 rounded-xl p-8 text-xl font-semibold mx-6 my-2">Visual</button>
+        <button className="bg-gray-300 rounded-xl p-8 text-xl font-semibold mx-6 my-2">Audio</button>
       </div>
-    
     </div>
     {/* END GAMEBOARD COMPONENT*/}
 

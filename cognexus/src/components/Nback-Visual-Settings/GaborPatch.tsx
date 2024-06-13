@@ -79,7 +79,7 @@ const GaborPatch: React.FC = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, [speed]);
 
-  return <canvas ref={canvasRef} width={size} height={size} className="mx-auto my-4" />;
+  return <canvas ref={canvasRef} width={size} height={size} />;
 };
 
 export default GaborPatch;
