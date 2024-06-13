@@ -1,8 +1,48 @@
 import React, { useContext } from 'react';
 import {GameContext} from '../pages/games/Nback';
+import { GaborPatchVisual, LettersVisual, NumbersVisual, ShapesVisual, RandomVisual} from './Nback-Visual-Settings';
+import { WordsAudio, NumbersAudio, LettersAudio, PhonemesAudio, RandomAudio } from './Nback-Audio-Settings';
 
 const NbackSettings: React.FC = () => {
     const {checkStimuli, state, dispatch} = useContext(GameContext);
+
+    const handleSave = () => {
+        const stimuliNum = state.audio.length + state.visual.length + state.tactile.length;
+        if (stimuliNum < state.prefixValue) {
+            alert(`Please select at least ${state.prefixValue} stimuli`);
+            return;
+        } else if (stimuliNum > state.prefixValue) {
+            alert(`Please select no more than ${state.prefixValue} stimuli`);
+            return;
+        } else if (state.tactile.length > 0) {
+            alert('Oops, tactile stimuli aren\t available yet. In the meantime, please select something else to continue. Thank you!');
+        } else {
+            const stimuliOrder = {audio: [], visual: [], tactile: []}
+            for(let i = 0; i < state.audio.length + state.visual.length + state.tactile.length; i++) {
+                
+                if (state.audio[i]) {
+                    stimuliOrder.audio.push(state.audio[i]);
+                }; 
+                if (state.visual[i]) {
+                    stimuliOrder.visual.push(state.visual[i]);
+                };
+                if (state.tactile[i]) {
+                    stimuliOrder.tactile.push(state.tactile[i]);
+                };
+            };
+
+            
+
+
+            dispatch({ type: 'concatedStimuli', value: stimuliOrder});
+            alert('Settings saved');
+            console.log(stimuliOrder)
+
+        }
+    };
+
+
+
 
 return (
 <div className="bg-gray-400 shadow-2xl rounded-lg p-6 w-full max-w-sm mx-auto mt-10">
@@ -84,7 +124,7 @@ return (
 
       <input 
       type="checkbox" 
-      value="Letters" 
+      value="audio" 
       name="Letters" 
       id="Letters" 
       />
@@ -139,13 +179,6 @@ return (
       <input 
       type="checkbox" 
       value="visual" 
-      name="Phonemes" 
-      id="Phonemes" />
-      <label htmlFor="Phonemes" className="block text-sm font-medium text-gray-700 mb-1">Phonemes</label>
-
-      <input 
-      type="checkbox" 
-      value="visual" 
       name="Numbers" 
       id="Numbers" />
       <label htmlFor="Numbers" className="block text-sm font-medium text-gray-700 mb-1">Numbers</label>
@@ -185,11 +218,12 @@ return (
 
       </div>
       {/* TACTILE STIMULI INPUTS END */}
+
       </div>
 
 
       <button
-        // onClick={handleSave}
+        onClick={handleSave}
         className="w-full bg-indigo-500 text-white py-2 rounded-lg font-medium hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         Save Settings

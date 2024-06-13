@@ -22,7 +22,7 @@ const shapes: Shapes = {
   heptagon: <Heptagon />,
 };
 
-const ShapesComponent: React.FC = () => {
+const ShapesVisual: React.FC = () => {
   // Get the keys of the shapes object
   const shapeKeys = Object.keys(shapes);
 
@@ -41,4 +41,4 @@ const ShapesComponent: React.FC = () => {
   );
 };
 
-export default ShapesComponent;
+export default ShapesVisual;

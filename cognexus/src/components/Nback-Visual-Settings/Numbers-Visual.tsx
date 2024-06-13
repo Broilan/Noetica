@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Numbers: React.FC = () => {
+const NumbersVisual: React.FC = () => {
     const numbers = [1, 2, 3, 4, 5, 6];
     const randomIndex = Math.floor(Math.random() * numbers.length);
     const randomNum = numbers[randomIndex];
@@ -12,4 +12,4 @@ const Numbers: React.FC = () => {
     );
 };
 
-export default Numbers;
+export default NumbersVisual;

@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { GameContext } from '../pages/games/Nback';
+import { GaborPatchVisual, LettersVisual, NumbersVisual, ShapesVisual, RandomVisual} from './Nback-Visual-Settings';
+import { WordsAudio, NumbersAudio, LettersAudio, PhonemesAudio, RandomAudio } from './Nback-Audio-Settings';
 
-const NbackGameboard: React.FC = (prefixValue, nValue) => {
+const NbackGameboard: React.FC = () => {
+    const {checkStimuli, state, dispatch} = useContext(GameContext);
     const [gameState, setGameState] = useState(false);
-    const [stimuli, setStimuli] = useState("STIMULI");
+    const [stimuli, setStimuli] = useState("STIMULI"); 
+    
+    const handleStart = () => {
+        // const timer = setInterval(() => {
+        //     setStimuli(state.concatedStimuli[state.duration]);
+        // }, state.iSInterval * 1000);
+        setGameState(true);
+        
+    }
 
     return (
         <div className='flex flex-col rounded-2xl mx-auto shadow-2xl justify-between bg-gray-400 w-[30rem] h-[40rem]'>
@@ -77,7 +89,7 @@ const NbackGameboard: React.FC = (prefixValue, nValue) => {
                     </>
                     :
                     <button 
-                    onClick={() => setGameState(true)} 
+                    onClick={() => handleStart()} 
                     className="bg-gray-300 rounded-xl p-8 text-xl font-semibold mx-6 my-2">
                     Begin
                     </button>

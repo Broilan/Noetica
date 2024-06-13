@@ -5,7 +5,7 @@ import Letters from './Letters-Visual';
 import Phonemes from './Phonemes-Visual';
 import Shapes from './Shapes-Visual';
 
-const Random: React.FC = () => {
+const RandomVisual: React.FC = () => {
 
     const items = [
         <GaborPatch />,
@@ -22,4 +22,4 @@ const Random: React.FC = () => {
     );
 };
 
-export default Random;
+export default RandomVisual;

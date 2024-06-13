@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Letters: React.FC = () => {
+const LettersVisual: React.FC = () => {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
     const randomLetter = letters[Math.floor(Math.random() * letters.length)];
 
@@ -11,4 +11,4 @@ const Letters: React.FC = () => {
     );
 };
 
-export default Letters;
+export default LettersVisual;

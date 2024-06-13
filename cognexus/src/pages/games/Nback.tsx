@@ -12,6 +12,7 @@ interface settings {
   audio?: string[];
   visual?: string[];
   tactile?: string[];
+  concatedStimuli?: object;
 }
 
 const reducer = (state: settings, action: any) => {
@@ -37,6 +38,9 @@ const reducer = (state: settings, action: any) => {
     case 'tactile':
       return { ...state, tactile: action.value };
 
+    case 'concatedStimuli':
+      return { ...state, concatedStimuli: action.value };  
+
     default:
       return state;
   }
@@ -52,7 +56,8 @@ const Nback: React.FC = () => {
     iSInterval: 2,
     audio: [],
     visual: [],
-    tactile: []
+    tactile: [],
+    concatedStimuli: {audio:[], visual:[], tactile:[]}
   });
 
   const checkStimuli = ({type, value}: any) => {
@@ -84,7 +89,6 @@ const Nback: React.FC = () => {
       default:
         break;
     } 
-    console.log(state);
   }
 
 

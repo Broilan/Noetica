@@ -20,7 +20,7 @@ const gabors: Gabor[] = [
 ]
 
 // Gabor patch component
-const GaborPatch: React.FC = () => {
+const GaborPatchVisual: React.FC = () => {
   const gaborParams = useRef(gabors[Math.floor(Math.random() * gabors.length)]);
   const { frequency, orientation, initialPhase, size, speed } = gaborParams.current;
 
@@ -82,5 +82,5 @@ const GaborPatch: React.FC = () => {
   return <canvas ref={canvasRef} width={size} height={size} />;
 };
 
-export default GaborPatch;
+export default GaborPatchVisual;
 
