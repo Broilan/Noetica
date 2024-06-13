@@ -36,7 +36,7 @@ const audiologicalData = {
 const visualData = {
     highlight: undefined,
 
-    gabor: [
+    gabor: [ { size: 1, orientation: 0 }, { size: 1, orientation: 45 }, { size: 1, orientation: 90 }, { size: 1, orientation: 135 },
         
     ],
 
