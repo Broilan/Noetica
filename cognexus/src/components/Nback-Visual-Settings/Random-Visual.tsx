@@ -2,7 +2,6 @@ import React from 'react';
 import GaborPatch from './GaborPatch-Visual';
 import Numbers from './Numbers-Visual';
 import Letters from './Letters-Visual';
-import Phonemes from './Phonemes-Visual';
 import Shapes from './Shapes-Visual';
 
 const RandomVisual: React.FC = () => {
@@ -11,7 +10,6 @@ const RandomVisual: React.FC = () => {
         <GaborPatch />,
         <Numbers />,
         <Letters />,
-        <Phonemes />,
         <Shapes />
     ];
 

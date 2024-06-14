@@ -17,28 +17,23 @@ const NbackSettings: React.FC = () => {
         } else if (state.tactile.length > 0) {
             alert('Oops, tactile stimuli aren\t available yet. In the meantime, please select something else to continue. Thank you!');
         } else {
-            const stimuliOrder = {audio: [], visual: [], tactile: []}
-            for(let i = 0; i < state.audio.length + state.visual.length + state.tactile.length; i++) {
-                
-                if (state.audio[i]) {
-                    stimuliOrder.audio.push(state.audio[i]);
-                }; 
-                if (state.visual[i]) {
-                    stimuliOrder.visual.push(state.visual[i]);
-                };
-                if (state.tactile[i]) {
-                    stimuliOrder.tactile.push(state.tactile[i]);
-                };
-            };
-
-            
-
-
-            dispatch({ type: 'concatedStimuli', value: stimuliOrder});
-            alert('Settings saved');
-            console.log(stimuliOrder)
-
-        }
+          let arr = [];
+          for (let i = 0; i < Math.max(state.audio.length, state.visual.length, state.tactile.length); i++) {
+            if(state.audio[i] !== undefined) {
+              arr.push(state.audio[i]);
+            }
+            if(state.visual[i] !== undefined) {
+              arr.push(state.visual[i]);
+            }
+            if(state.tactile[i] !== undefined) {
+              arr.push(state.tactile[i]);
+            }
+        } 
+        dispatch({ type: 'concatenatedStimuli', value: arr });
+        alert('Settings saved');
+        console.log('arr', arr)
+      }
+        console.log(state)
     };
 
 

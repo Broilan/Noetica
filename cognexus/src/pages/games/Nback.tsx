@@ -12,7 +12,7 @@ interface settings {
   audio?: string[];
   visual?: string[];
   tactile?: string[];
-  concatedStimuli?: object;
+  concatenatedStimuli?: object;
 }
 
 const reducer = (state: settings, action: any) => {
@@ -38,8 +38,8 @@ const reducer = (state: settings, action: any) => {
     case 'tactile':
       return { ...state, tactile: action.value };
 
-    case 'concatedStimuli':
-      return { ...state, concatedStimuli: action.value };  
+    case 'concatenatedStimuli':
+      return { ...state, concatenatedStimuli: action.value };  
 
     default:
       return state;
@@ -57,14 +57,14 @@ const Nback: React.FC = () => {
     audio: [],
     visual: [],
     tactile: [],
-    concatedStimuli: {audio:[], visual:[], tactile:[]}
+    concatenatedStimuli: []
   });
 
   const checkStimuli = ({type, value}: any) => {
     switch (value.target.value) {
       case "audio":
         if (value.target.checked) {
-          dispatch({ type: 'audio', value: [...state.audio, value.target.name] });
+          dispatch({ type: 'audio', value: [...state.audio, {stimulusType: value.target.value, stimulusName:value.target.name}] });
         } else {
           dispatch({ type: 'audio', value: state.audio.filter((item: any) => item !== value.target.name) });
         }
@@ -72,7 +72,7 @@ const Nback: React.FC = () => {
 
       case "visual":
         if (value.target.checked) {
-          dispatch({ type: 'visual', value: [...state.visual, value.target.name] });
+          dispatch({ type: 'visual', value: [...state.visual, {stimulusType: value.target.value, stimulusName:value.target.name}] });
         } else {
           dispatch({ type: 'visual', value: state.visual.filter((item: any) => item !== value.target.name) });
         }        
@@ -80,7 +80,7 @@ const Nback: React.FC = () => {
 
       case "tactile":
           if (value.target.checked) {
-          dispatch({ type: 'tactile', value: [...state.tactile, value.target.name] });
+          dispatch({ type: 'tactile', value: [...state.tactile, {stimulusType: value.target.value, stimulusName:value.target.name}] });
         } else {
           dispatch({ type: 'tactile', value: state.tactile.filter((item: any) => item !== value.target.name) });
         }        

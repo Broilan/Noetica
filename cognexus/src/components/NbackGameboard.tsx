@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { GameContext } from '../pages/games/Nback';
 import { GaborPatchVisual, LettersVisual, NumbersVisual, ShapesVisual, RandomVisual} from './Nback-Visual-Settings';
 import { WordsAudio, NumbersAudio, LettersAudio, PhonemesAudio, RandomAudio } from './Nback-Audio-Settings';
@@ -6,13 +6,25 @@ import { WordsAudio, NumbersAudio, LettersAudio, PhonemesAudio, RandomAudio } fr
 const NbackGameboard: React.FC = () => {
     const {checkStimuli, state, dispatch} = useContext(GameContext);
     const [gameState, setGameState] = useState(false);
-    const [stimuli, setStimuli] = useState("STIMULI"); 
+    const [stimuli, setStimuli] = useState();
     
     const handleStart = () => {
-        // const timer = setInterval(() => {
-        //     setStimuli(state.concatedStimuli[state.duration]);
-        // }, state.iSInterval * 1000);
         setGameState(true);
+        let numOfStimuli = 0;
+        const timer = setInterval(() => {
+            console.log("oioi", state.concatenatedStimuli, stimuli, state.concatenatedStimuli[numOfStimuli], numOfStimuli)
+
+            if(numOfStimuli === state.concatenatedStimuli.length - 1) {
+                setStimuli(state.concatenatedStimuli[0]?.stimulusName);
+                numOfStimuli = 0;
+            } else {
+                setStimuli(state.concatenatedStimuli[numOfStimuli]?.stimulusName);
+                numOfStimuli++;
+            }
+
+        }, state.iSInterval * 1000);
+        
+
         
     }
 
