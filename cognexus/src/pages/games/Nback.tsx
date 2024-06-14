@@ -7,12 +7,19 @@ import NbackSettings from '../../components/NbackSettings';
 interface settings {  
   nValue: number;
   duration: number;
-  prefixValue: number;
   iSInterval: number;
-  audio?: string[];
-  visual?: string[];
-  tactile?: string[];
-  concatenatedStimuli?: object;
+  stimuliTypes?: {
+    Audiological: boolean;
+    Positional: boolean;
+    Color: boolean;
+    Tactile: boolean;
+    Imagistic: boolean;
+  };
+  stimuli?: {
+    Audiological: string[];
+    Visual: string[];
+    Tactile: string[];
+  };
 }
 
 const reducer = (state: settings, action: any) => {
@@ -23,23 +30,14 @@ const reducer = (state: settings, action: any) => {
     case 'duration':
       return { ...state, duration: action.value };  
 
-    case 'prefixValue':
-      return { ...state, prefixValue: action.value };
-
     case 'iSInterval':
       return { ...state, iSInterval: action.value };  
+      
+    case 'stimuliTypes':
+      return { ...state, stimuliTypes: action.value };   
 
-    case 'audio':
-      return { ...state, audio: action.value };
-
-    case 'visual':
-      return { ...state, visual: action.value };
-
-    case 'tactile':
-      return { ...state, tactile: action.value };
-
-    case 'concatenatedStimuli':
-      return { ...state, concatenatedStimuli: action.value };  
+    case 'stimuli':
+      return { ...state, stimuli: action.value };
 
     default:
       return state;
@@ -52,51 +50,40 @@ const Nback: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, {
     nValue: 1,
     duration: 60,
-    prefixValue: 2,
     iSInterval: 2,
-    audio: [],
-    visual: [],
-    tactile: [],
-    concatenatedStimuli: []
+    stimuliTypes: {
+      Audiological: false,
+      Positional: false,
+      Color: false,
+      Tactile: false,
+      Imagistic: false
+    },
+    stimuli: {
+      Audiological: [],
+      Visual: [],
+      Tactile: []
+    }
   });
 
-  const checkStimuli = ({type, value}: any) => {
-    switch (value.target.value) {
-      case "audio":
-        if (value.target.checked) {
-          dispatch({ type: 'audio', value: [...state.audio, {stimulusType: value.target.value, stimulusName:value.target.name}] });
-        } else {
-          dispatch({ type: 'audio', value: state.audio.filter((item: any) => item !== value.target.name) });
-        }
-        break;
-
-      case "visual":
-        if (value.target.checked) {
-          dispatch({ type: 'visual', value: [...state.visual, {stimulusType: value.target.value, stimulusName:value.target.name}] });
-        } else {
-          dispatch({ type: 'visual', value: state.visual.filter((item: any) => item !== value.target.name) });
-        }        
-        break;
-
-      case "tactile":
-          if (value.target.checked) {
-          dispatch({ type: 'tactile', value: [...state.tactile, {stimulusType: value.target.value, stimulusName:value.target.name}] });
-        } else {
-          dispatch({ type: 'tactile', value: state.tactile.filter((item: any) => item !== value.target.name) });
-        }        
-        break;
-
-      default:
-        break;
-    } 
-  }
+  // const checkStimuli = ({type, value}: any) => {
+  //     case "stimuliTypes":
+  //       if (value.target.checked) {
+  //         dispatch({ type: 'stimuliTypes', value: [...state.stimuliTypes, value.target.name] });
+  //       } else {
+  //         dispatch({ type: 'stimuliTypes', value: state.stimuliTypes.filter((item: any) => item !== value.target.name) });
+  //       }
+  //       break;
+  //     default:
+  //       break;
+  //   } 
+  // }
 
 
 
   return (
     <>
     <div className='flex items-center py-20'>
-      <GameContext.Provider value={{ checkStimuli, state, dispatch }}>
+      <GameContext.Provider value={{ state, dispatch }}>
         <NbackGameboard/>
         <NbackSettings/>
       </GameContext.Provider>
