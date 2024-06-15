@@ -11,12 +11,12 @@ const NbackSettings: React.FC = () => {
         };
 
     const checkStimuli = (e: any) => {
-          if( !state.stimuli[e.target.value] ) {
-            dispatch({ type: 'stimuli', value: { ...state.stimuli, [e.target.value]: [e.target.name] } });
+          if( e.target.checked ) {
+            dispatch({ type: 'stimuli', value: { ...state.stimuli, [e.target.value]: [...state.stimuli[e.target.value], e.target.name] } });
           } else {
-            dispatch({ type: 'stimuli', value: { ...state.stimuli, [e.target.value]: [...state.stimuli[e.target.value], e.target.name] } })
-          console.log("21", e.target, state.stimuli)
+            dispatch({ type: 'stimuli', value: { ...state.stimuli, [e.target.value]: state.stimuli[e.target.value].filter((el: string) => el !== e.target.name) } });
         }
+        console.log("20", e.target, state)
       };
     
 
