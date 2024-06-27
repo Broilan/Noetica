@@ -1,4 +1,5 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
+import Alert, { AlertRef } from '../../../components/Alert';
 
 interface ControlPanelProps {
   isOpen: boolean;
@@ -95,6 +96,7 @@ const LOCAL_STORAGE_KEY = 'nBackSettings';
 
 const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
   const [state, dispatch] = useReducer(settingsReducer, initialState);
+  const alertRef = useRef<AlertRef>(null);
 
   useEffect(() => {
     const savedSettings = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -107,6 +109,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
       }
     }
   }, []);
+
 
 
   const handleNBackLevelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -144,15 +147,30 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
   };
 
   const handleSave = () => {
+    // Check if at least one stimulus is selected
+    const hasSelectedStimulus = Object.values(state.stimuli).some(value => value !== null && value !== false);
+
+    if (!hasSelectedStimulus) {
+      alertRef.current?.openAlert('error', 'Please select at least one stimulus before saving.');
+      return;
+    }
+
     // Save settings to local storage
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
-    // Close the modal
-    onClose();
+    
+    // Show success modal
+    alertRef.current?.openAlert('success', 'Settings saved successfully!');
+    
+    // Close the control panel
+    setTimeout(() => {
+      onClose();
+    }, 1500); // Close after 1.5 seconds to allow the user to see the success message
   };
 
   if (!isOpen) return null;
 
   return (
+    <>
     <div 
       className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
       onClick={handleBackdropClick}
@@ -313,6 +331,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
         </button>
       </div>
     </div>
+     <Alert ref={alertRef} type="success" message="" />
+     </>
   );
 };
 
