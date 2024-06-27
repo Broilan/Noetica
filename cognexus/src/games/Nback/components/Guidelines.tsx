@@ -7,9 +7,28 @@ interface GuidelinesProps {
 }
 
 const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className={`fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center ${isOpen ? 'block' : 'hidden'}`}>
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full max-h-screen overflow-hidden">
+    <div 
+      className={`fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center ${isOpen ? 'block' : 'hidden'}`}
+      onClick={handleBackdropClick}
+    >
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full max-h-screen overflow-hidden relative">
+        <button 
+          onClick={onClose} 
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mt-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
         <h1 className="text-2xl font-semibold mb-4">Guidelines</h1>
         
         <div className="mb-6 overflow-auto h-96 custom-scrollbar">
@@ -24,7 +43,10 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
 
             <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'><em>N</em>-Level</h2>
             <p className='mb-4'>This setting determines how many turns ago, <em>n</em>, you'll need to remember the stimuli from. The higher the number, the more challenging the game will be.</p>
-           
+            
+            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Auto Progression</h2>
+            <p className='mb-4'>When selected, your <em>n</em> will automatically decrement or increment in accordance with your success. If you get 3 wrong in a row, it'll decrement, and if you get 3 correct, it'll increment. If you get 3 wrong while <em>n</em>=1, then <em>n</em> will remain the same, and you may continue playing.</p>
+
             <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Audiological Stimuli</h2>
             <ol>
 
@@ -67,9 +89,6 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
             <p className='mb-4'> When this setting's turned on alongside imagistic mode, the images will take on various colors, and you'll need to determine whether you've seen that color <em>n</em> turns ago. Without imagistic stimuli turned on, the squares themselves will be highlighted. </p>
         </div>
 
-        <button onClick={onClose} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-200">
-          Close
-        </button>
       </div>
     </div>
   );
