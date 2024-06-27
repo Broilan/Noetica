@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import ControlPanel from './ControlPanel';
+import Tooltip from '../../../components/Tooltip';
 import { FaGear } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
 import { IoStop } from "react-icons/io5";
@@ -51,13 +52,23 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
         <span className="font-['Press_Start_2P'] text-2xl text-gray-700 mr-auto mb-2">Nback</span>
         {!isGameStarted && (
           <>
-            <i className="text-gray-500 hover:text-gray-700 mr-1 text-lg"><FaBook /></i>
+            <Tooltip text="Guide">
             <button
               onClick={() => setIsModalOpen(true)}
               className="text-gray-500 hover:text-gray-700 text-lg"
             >
-              <i><FaGear /></i>
+              <FaBook />
             </button>
+            </Tooltip>
+            
+            <Tooltip text="Settings">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="text-gray-500 hover:text-gray-700 text-lg"
+            >
+              <FaGear />
+            </button>
+            </Tooltip>
           </>
         )}
         {isGameStarted && (

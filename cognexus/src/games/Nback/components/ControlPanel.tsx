@@ -97,8 +97,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
                 <option value="">Select Sub-Type</option>
                 <option value="shape">Shape</option>
                 <option value="gabor">Gabor</option>
-                <option value="letter">Letter</option>
-                <option value="number">Number</option>
+                <option value="letter">Letters(eng)</option>
+                <option value="pentominoes">Pentominoes</option>
               </select>
             )}
           </label>
