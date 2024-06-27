@@ -53,7 +53,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onStart }) => {
   };
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg max-w-md">
+    <div className="p-6 bg-white shadow-xl rounded-lg max-w-md">
       <h2 className="text-2xl font-semibold mb-4">Control Panel</h2>
       
       <label className="block mb-4">

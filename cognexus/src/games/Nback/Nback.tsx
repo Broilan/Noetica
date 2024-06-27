@@ -26,7 +26,7 @@ const NBack: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center bg-gray-100">
+    <div className="flex flex-row items-center justify-center mt-40 w-fit bg-black mx-auto">
       <GameBoard stimuli={stimuli} nBackLevel={nBackLevel} />
       <ControlPanel onStart={handleStart} />
     </div>
