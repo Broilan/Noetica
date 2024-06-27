@@ -29,7 +29,7 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
           </svg>
         </button>
         
-        <h1 className="text-2xl font-semibold mb-4">Guidelines</h1>
+        <h1 className="text-3xl font-semibold mb-4">Guidelines</h1>
         
         <div className="mb-6 overflow-auto h-96 custom-scrollbar">
         <hr className='mb-2 bg-[#ccc] h-[2px]'/>
@@ -37,16 +37,33 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
             <p className="mb-4">The N-back task is a continuous performance task that was designed by Wayne Kirchner in 1958 to assess working memory maintenance, updating, and monitoring.</p>
             <h2 className="text-xl font-semibold mb-2 border-b-2 border-b-gray-200">How to Play</h2>
             <p className='mb-4'>Upon beginning the game, you'll see a 3 by 3 matrix, and new stimuli will arise in each segment of it every round according to your settings. Each round, it's your job to determine whether you've seen any of the current stimuli <em>n</em> rounds ago. If you have, you'll select which one(s) using the the buttons below the board. You may also use the <kbd>a</kbd>, <kbd>s</kbd>, <kbd>d</kbd>, <kbd>f</kbd>, <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, and <kbd>4</kbd> keys if you're using a keyboard.  </p>
-            <h1 className="text-2xl font-semibold mb-2">Settings</h1>
+            <h1 className="text-3xl font-semibold mb-2">Settings</h1>
             <hr className='mb-2 bg-[#ccc] h-[2px]'/>
+           
             <p className='mb-4'>Below are descriptions of the various settings you can manipulate to customize your game.</p>
-
-            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'><em>N</em>-Level</h2>
-            <p className='mb-4'>This setting determines how many turns ago, <em>n</em>, you'll need to remember the stimuli from. The higher the number, the more challenging the game will be.</p>
             
-            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Auto Progression</h2>
-            <p className='mb-4'>When selected, your <em>n</em> will automatically decrement or increment in accordance with your success. If you get 3 wrong in a row, it'll decrement, and if you get 3 correct, it'll increment. If you get 3 wrong while <em>n</em>=1, then <em>n</em> will remain the same, and you may continue playing.</p>
-
+            <h1 className='text-2xl font-bold mb-2 border-b-2 border-b-gray-200'>Modes</h1>
+            <p className='mb-3'>Below is information on the various modes you can choose from.</p>
+            <ol>
+            <li className='mb-2'><strong>Normal:</strong> Refer to "How to Play" </li>
+            <li className='mb-2'><strong>Synesthesia:</strong> Placeholder</li>
+            <li className='mb-4'><strong>Contextual:</strong> Placeholder</li>
+            </ol>
+            <h1 className='text-2xl font-semibold mb-2 border-b-2 border-b-gray-200'><em>N</em>-Level</h1>
+            <ol>
+              <li className='mb-2'><strong>Normal:</strong>Your <em>n</em> automatically decrements or increments in accordance with your success. </li>
+              <li className='mb-2'><strong>Unitary Progression:</strong>Your <em>n</em> automatically decrements or increments in accordance with your success. </li>
+              <li className='mb-2'><strong>Plural Progression:</strong>Your <em>n</em> splits into several (n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>, n<sub>4</sub>) that are associated with their own stimuli, and they'll decrement and increment independent of one another. </li>
+            </ol> 
+            
+            <h1 className='text-2xl font-bold mb-2 border-b-2 border-b-gray-200'>Miscellaneous</h1>
+            <ol>
+              <li className='mb-2'><strong>Arithmetic:</strong>Placeholder. </li>
+              <li className='mb-2'><strong>Distractors:</strong>Random, unimportant stimuli will arise to distract you. </li>
+            </ol>            
+          
+            
+            <h1 className='text-2xl font-bold mb-2 border-b-2 border-b-gray-200'>Stimuli</h1>
             <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Audiological Stimuli</h2>
             <ol>
 
