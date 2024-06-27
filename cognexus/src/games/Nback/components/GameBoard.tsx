@@ -3,6 +3,7 @@ import Scoreboard from './Scoreboard';
 import ControlPanel from './ControlPanel';
 import { FaGear } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
+import { IoStop } from "react-icons/io5";
 import { IoMdStopwatch } from "react-icons/io";
 import { LuGauge } from "react-icons/lu";
 
@@ -36,6 +37,7 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
 
   const handleStop = () => {
     setIsGameStarted(false);
+    setTime(0);
   };
 
   const handleStart = () => {
@@ -43,24 +45,34 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
     setTime(0);
   };
 
-
   return (
     <div className="relative p-6 bg-white shadow-xl border-gray-500 border-2 rounded-lg max-w-lg mx-auto" style={{ width: '400px', height: '600px' }}>
-      <div className='flex flex-row items-center justify-center mb-4'>
-        <span className="font-['Press_Start_2P'] text-2xl text-gray-700 mr-auto">Nback</span>
-        <i className="text-gray-500 hover:text-gray-700 mr-1 text-lg"><FaBook /></i>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="text-gray-500 hover:text-gray-700 text-lg"
-        >
-          <i><FaGear /></i>
-        </button>
+      <div className='flex flex-row items-center justify-center'>
+        <span className="font-['Press_Start_2P'] text-2xl text-gray-700 mr-auto mb-2">Nback</span>
+        {!isGameStarted && (
+          <>
+            <i className="text-gray-500 hover:text-gray-700 mr-1 text-lg"><FaBook /></i>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="text-gray-500 hover:text-gray-700 text-lg"
+            >
+              <i><FaGear /></i>
+            </button>
+          </>
+        )}
+        {isGameStarted && (
+          <button
+            onClick={handleStop}
+            className="p-1 bg-red-700 mb-2 text-white rounded-md"
+          >
+            <IoStop />
+          </button>
+        )}
       </div>
 
       <Scoreboard time={time} score={score} nBackLevel={nBackLevel} />
 
-
-      <div className="grid grid-cols-3 gap-4" style={{ height: '60%' }}>
+      <div className="grid grid-cols-3 gap-4" style={{ height: '70%' }}>
         {Array.from({ length: 9 }).map((_, idx) => (
           <div key={idx} className="w-full h-full bg-gray-100 border border-gray-300 flex items-center justify-center rounded-lg">
             {stimuli.color && <div className="w-full h-full bg-red-500" />}
@@ -70,14 +82,8 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
       </div>
 
       {isGameStarted ? (
-        <div className="mt-2 font-bold text-sm" style={{ height: '30%' }}>
-          <button
-            onClick={handleStop}
-            className="p-2 bg-red-500 text-white rounded-md hover:bg-red-700"
-          >
-            Stop
-          </button>
-          <div className="flex flex-row space-x-2">
+        <div className=" font-bold text-sm">
+          <div className="mt-4 flex flex-row space-x-5">
             <button className="p-3 bg-blue-500 text-white rounded-md hover:bg-blue-700">1: Position</button>
             <button className="p-3 bg-green-500 text-white rounded-md hover:bg-green-700">2: Audio</button>
             <button className="p-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-700">3: Shape</button>
@@ -85,12 +91,12 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
           </div>
         </div>
       ) : (
-        <button
+        <div
           onClick={handleStart}
-          className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700"
+          className="hover:cursor-pointer font-['Press_Start_2P'] mt-8 px-4 py-2 text-black rounded-md border-2 border-black hover:bg-green-500"
         >
-          Start
-        </button>
+          Press here to start
+        </div>
       )}
 
       {isModalOpen && <ControlPanel isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
