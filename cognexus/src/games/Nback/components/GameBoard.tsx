@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import ControlPanel from './ControlPanel';
 import Guidelines from './Guidelines';
-import Tooltip from '../../../components/Tooltip';
+import {Tooltip, TicketModal} from '../../../components';
+
 import { FaGear } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
 import { IoStop } from "react-icons/io5";
+import { TbHelpTriangleFilled } from "react-icons/tb";
 import { IoMdStopwatch } from "react-icons/io";
 import { LuGauge } from "react-icons/lu";
 
@@ -22,6 +24,8 @@ interface GameBoardProps {
 const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isGuidelinesModalOpen, setIsGuidelinesModalOpen] = useState(false);
+  const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
+  
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [time, setTime] = useState(0);
   const [score, setScore] = useState(0);
@@ -54,6 +58,15 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
         <span className="font-['Press_Start_2P'] text-2xl text-gray-700 mr-auto mb-2">Nback</span>
         {!isGameStarted && (
           <>
+            <Tooltip text="Issue">
+              <button
+                onClick={() => setIsTicketModalOpen(true)}
+                className="text-gray-500 hover:text-gray-700 text-xl mr-2"
+              >
+                <TbHelpTriangleFilled />
+              </button>
+            </Tooltip>
+
             <Tooltip text="Guide">
               <button
                 onClick={() => setIsGuidelinesModalOpen(true)}
@@ -114,6 +127,9 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
 
       {isSettingsModalOpen && <ControlPanel isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} />}
       {isGuidelinesModalOpen && <Guidelines isOpen={isGuidelinesModalOpen} onClose={() => setIsGuidelinesModalOpen(false)} />}
+      {isTicketModalOpen && <TicketModal isOpen={isTicketModalOpen} onClose={() => setIsTicketModalOpen(false)} onSubmit={function (ticketData: TicketData): void {
+        throw new Error('Function not implemented.');
+      } } />}
     </div>
   );
 };

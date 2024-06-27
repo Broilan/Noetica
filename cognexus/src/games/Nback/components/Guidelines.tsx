@@ -16,12 +16,16 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
         <hr className='mb-2 bg-[#ccc] h-[2px]'/>
             <h2 className="text-xl font-semibold mb-2">Intro</h2>
             <p className="mb-4">The N-back task is a continuous performance task that was designed by Wayne Kirchner in 1958 to assess working memory maintenance, updating, and monitoring.</p>
-            <h2 className="text-xl font-semibold mb-2">How to Play</h2>
+            <h2 className="text-xl font-semibold mb-2 border-b-2 border-b-gray-200">How to Play</h2>
             <p className='mb-4'>Upon beginning the game, you'll see a 3 by 3 matrix, and new stimuli will arise in each segment of it every round according to your settings. Each round, it's your job to determine whether you've seen any of the current stimuli <em>n</em> rounds ago. If you have, you'll select which one(s) using the the buttons below the board. You may also use the <kbd>a</kbd>, <kbd>s</kbd>, <kbd>d</kbd>, <kbd>f</kbd>, <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, and <kbd>4</kbd> keys if you're using a keyboard.  </p>
             <h1 className="text-2xl font-semibold mb-2">Settings</h1>
             <hr className='mb-2 bg-[#ccc] h-[2px]'/>
             <p className='mb-4'>Below are descriptions of the various settings you can manipulate to customize your game.</p>
-            <h2 className='text-xl font-semibold mb-2 underline'>Audiological</h2>
+
+            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'><em>N</em>-Level</h2>
+            <p className='mb-4'>This setting determines how many turns ago, <em>n</em>, you'll need to remember the stimuli from. The higher the number, the more challenging the game will be.</p>
+           
+            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Audiological Stimuli</h2>
             <ol>
 
                 <Tooltip text='Smallest units of meaning in a language'>
@@ -34,10 +38,10 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
                 <li className='mb-2'><strong>Words:</strong> Polysyllabic English words </li>
                 <li className='mb-2'><strong>Letters:</strong> Alphabetic characters</li>
                 <Tooltip text='These are the numbers we use globally'>
-                 <li className='mb-2'><strong>Numbers:</strong> Hindu-Arabic numerals</li> 
+                 <li className='mb-4'><strong>Numbers:</strong> Hindu-Arabic numerals</li> 
                 </Tooltip>
             </ol>
-            <h2 className='text-xl font-semibold mb-2 underline'>Imagistic</h2>
+            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Imagistic Stimuli</h2>
             <ol>
               <li className='mb-2'><strong>Shapes:</strong> Various geometric forms</li>
               <li className='mb-2'>
@@ -48,7 +52,7 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
               <li className='mb-2'><strong>Letters:</strong> Alphabetic characters</li>
 
               <Tooltip text="Tetris blocks">
-              <li className='mb-2'>
+              <li className='mb-4'>
               <a href="https://en.wikipedia.org/wiki/Pentomino">
                 <strong className='text-blue-600'>Pentominoes:</strong> A polygon comprised of 5 tiles
               </a>
@@ -56,9 +60,10 @@ const Guidelines: React.FC<GuidelinesProps> = ({ isOpen, onClose }) => {
               </Tooltip>
 
             </ol>
-            <h2 className='text-xl font-semibold mb-2 underline'>Positional</h2>
+            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Positional Mode</h2>
             <p className='mb-4'>When this setting's on, if you're using imagistic stimuli, chromatic stimuli, or both, you'll simply select the "position" button if you've seen either of the formentioned stimuli <em>n</em> turns ago.</p>
-            <h2 className='text-xl font-semibold mb-2 underline'>Chromatic</h2>
+
+            <h2 className='text-xl font-semibold mb-2 border-b-2 border-b-gray-200'>Chromatic Mode</h2>
             <p className='mb-4'> When this setting's turned on alongside imagistic mode, the images will take on various colors, and you'll need to determine whether you've seen that color <em>n</em> turns ago. Without imagistic stimuli turned on, the squares themselves will be highlighted. </p>
         </div>
 
