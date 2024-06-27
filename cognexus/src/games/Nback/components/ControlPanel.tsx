@@ -23,13 +23,14 @@ interface ImageStimulus {
 
 interface SettingsState {
   nBackLevel: number;
+  progression: 'plural' | 'unitary';
   mode: string;
   miscSettings: { name: string; value: boolean }[];
   stimuli: StimuliState;
 }
 
 type ActionType =
-  | { type: 'SET_N_BACK_LEVEL'; payload: number }
+  | { type: 'SET_PROGRESSION'; payload: 'plural' | 'unitary' }
   | { type: 'SET_MODE'; payload: string }
   | { type: 'TOGGLE_MISC_SETTING'; payload: string }
   | { type: 'TOGGLE_STIMULUS'; payload: { name: 'position' | 'color' | 'audio' | 'image'; value: boolean } }
@@ -38,9 +39,9 @@ type ActionType =
 
 const initialState: SettingsState = {
   nBackLevel: 1,
+  progression: 'plural',
   mode: 'Normal',
   miscSettings: [
-    { name: 'Auto Progression', value: false },
     { name: 'Arithmetic', value: false },
     { name: 'Distractors', value: false },
   ],
@@ -54,8 +55,8 @@ const initialState: SettingsState = {
 
 function settingsReducer(state: SettingsState, action: ActionType): SettingsState {
   switch (action.type) {
-    case 'SET_N_BACK_LEVEL':
-      return { ...state, nBackLevel: action.payload };
+    case 'SET_PROGRESSION':
+      return { ...state, progression: action.payload };
     case 'SET_MODE':
       return { ...state, mode: action.payload };
     case 'TOGGLE_MISC_SETTING':
@@ -110,10 +111,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
     }
   }, []);
 
-
-
-  const handleNBackLevelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: 'SET_N_BACK_LEVEL', payload: Number(e.target.value) });
+  const handleProgressionChange = (progression: 'plural' | 'unitary') => {
+    dispatch({ type: 'SET_PROGRESSION', payload: progression });
   };
 
   const handleModeClick = (mode: string) => {
@@ -138,7 +137,6 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
   const handleSubTypeChange = (stimulusType: 'audio' | 'image', value: AudioStimulus['type'] | ImageStimulus['type']) => {
     dispatch({ type: 'SET_SUB_TYPE', payload: { stimulusType, value } });
   };
-
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
@@ -211,14 +209,22 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
         
         {/* N-Level */}
         <label className="block mb-4">
-          <h1 className='text-xl font-bold'>N-Level</h1>
-          <input
-            type="number"
-            min={1}
-            value={state.nBackLevel}
-            onChange={handleNBackLevelChange}
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
-          />
+          <h1 className='text-xl font-bold'>N-Settings</h1>
+          <div className="flex flex-row flex-wrap space-x-4">
+            {['plural progression', 'unitary progression'].map((prog) => (
+              <div
+                key={prog}
+                className="h-fit p-2 rounded-lg cursor-pointer transition-colors duration-200"
+                style={{ 
+                  backgroundColor: state.progression === prog ? '#2563eb' : '#d1d5db',
+                  color: state.progression === prog ? "white" : "black"
+                }}
+                onClick={() => handleProgressionChange(prog as 'plural' | 'unitary')}
+              >
+                {prog.charAt(0).toUpperCase() + prog.slice(1)}
+              </div>
+            ))}
+          </div>
         </label>
 
         {/* Misc Settings */}
