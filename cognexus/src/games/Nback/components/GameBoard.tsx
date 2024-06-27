@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Scoreboard from './Scoreboard';
 import ControlPanel from './ControlPanel';
 import { FaGear } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
@@ -45,20 +46,19 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
 
   return (
     <div className="relative p-6 bg-white shadow-xl border-gray-500 border-2 rounded-lg max-w-lg mx-auto" style={{ width: '400px', height: '600px' }}>
-      <div className='flex flex-row justify-between mb-4'>
-        <i className="text-gray-500 hover:text-gray-700 text-2xl"><FaBook /></i>
+      <div className='flex flex-row items-center justify-center mb-4'>
+        <span className="font-['Press_Start_2P'] text-2xl text-gray-700 mr-auto">Nback</span>
+        <i className="text-gray-500 hover:text-gray-700 mr-1 text-lg"><FaBook /></i>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="text-gray-500 hover:text-gray-700 text-2xl"
+          className="text-gray-500 hover:text-gray-700 text-lg"
         >
           <i><FaGear /></i>
         </button>
       </div>
 
-      <div className="flex text-xl font-bold justify-between items-center mb-4">
-        <div className="text-center"><IoMdStopwatch />{time}s</div>
-        <div className="text-center"><LuGauge />{score}:1</div>
-      </div>
+      <Scoreboard time={time} score={score} nBackLevel={nBackLevel} />
+
 
       <div className="grid grid-cols-3 gap-4" style={{ height: '60%' }}>
         {Array.from({ length: 9 }).map((_, idx) => (
