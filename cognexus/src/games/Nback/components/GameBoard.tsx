@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
 import ControlPanel from './ControlPanel';
+import Guidelines from './Guidelines';
 import Tooltip from '../../../components/Tooltip';
 import { FaGear } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
@@ -19,7 +20,8 @@ interface GameBoardProps {
 }
 
 const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isGuidelinesModalOpen, setIsGuidelinesModalOpen] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [time, setTime] = useState(0);
   const [score, setScore] = useState(0);
@@ -53,21 +55,21 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
         {!isGameStarted && (
           <>
             <Tooltip text="Guide">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="text-gray-500 hover:text-gray-700 text-lg"
-            >
-              <FaBook />
-            </button>
+              <button
+                onClick={() => setIsGuidelinesModalOpen(true)}
+                className="text-gray-500 hover:text-gray-700 text-lg mr-2"
+              >
+                <FaBook />
+              </button>
             </Tooltip>
             
             <Tooltip text="Settings">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="text-gray-500 hover:text-gray-700 text-lg"
-            >
-              <FaGear />
-            </button>
+              <button
+                onClick={() => setIsSettingsModalOpen(true)}
+                className="text-gray-500 hover:text-gray-700 text-lg"
+              >
+                <FaGear />
+              </button>
             </Tooltip>
           </>
         )}
@@ -110,7 +112,8 @@ const GameBoard: React.FC<GameBoardProps> = ({ stimuli, nBackLevel }) => {
         </div>
       )}
 
-      {isModalOpen && <ControlPanel isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
+      {isSettingsModalOpen && <ControlPanel isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} />}
+      {isGuidelinesModalOpen && <Guidelines isOpen={isGuidelinesModalOpen} onClose={() => setIsGuidelinesModalOpen(false)} />}
     </div>
   );
 };

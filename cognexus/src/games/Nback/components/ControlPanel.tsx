@@ -6,13 +6,20 @@ interface ControlPanelProps {
   onClose: () => void;
 }
 
+interface StimuliState {
+  position: boolean;
+  audio: string | null;
+  color: boolean;
+  image: string | null;
+}
+
 const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
   const [nBackLevel, setNBackLevel] = useState(1);
-  const [stimuli, setStimuli] = useState({
+  const [stimuli, setStimuli] = useState<StimuliState>({
     position: false,
-    audio: '',
+    audio: null,
     color: false,
-    image: '',
+    image: null,
   });
 
   const handleNBackLevelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,21 +30,14 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
     const { name, checked } = e.target;
     setStimuli((prev) => ({
       ...prev,
-      [name]: checked,
+      [name]: checked ? (name === 'position' || name === 'color' ? true : '') : (name === 'position' || name === 'color' ? false : null),
     }));
   };
 
-  const handleAudioChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSubTypeChange = (stimulusType: 'audio' | 'image', value: string) => {
     setStimuli((prev) => ({
       ...prev,
-      audio: e.target.value,
-    }));
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setStimuli((prev) => ({
-      ...prev,
-      image: e.target.value,
+      [stimulusType]: value,
     }));
   };
 
@@ -83,49 +83,119 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ isOpen, onClose }) => {
             <input
               type="checkbox"
               name="image"
-              checked={!!stimuli.image}
-              onChange={(e) => handleStimuliChange(e as any)}
+              checked={stimuli.image !== null}
+              onChange={handleStimuliChange}
               className="mr-2"
             />
             <span className="text-gray-700">Image</span>
-            {stimuli.image && (
-              <select
-                value={stimuli.image}
-                onChange={handleImageChange}
-                className="mt-1 p-2 border border-gray-300 rounded w-full"
-              >
-                <option value="">Select Sub-Type</option>
-                <option value="shape">Shape</option>
-                <option value="gabor">Gabor</option>
-                <option value="letter">Letters(eng)</option>
-                <option value="pentominoes">Pentominoes</option>
-              </select>
-            )}
           </label>
+          {stimuli.image !== null && (
+            <div className="ml-6 mt-2">
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="shape"
+                  checked={stimuli.image === 'shape'}
+                  onChange={() => handleSubTypeChange('image', 'shape')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Shape</span>
+              </label>
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="gabor"
+                  checked={stimuli.image === 'gabor'}
+                  onChange={() => handleSubTypeChange('image', 'gabor')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Gabor</span>
+              </label>
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="letter"
+                  checked={stimuli.image === 'letter'}
+                  onChange={() => handleSubTypeChange('image', 'letter')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Letters(eng)</span>
+              </label>
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="imageType"
+                  value="pentominoes"
+                  checked={stimuli.image === 'pentominoes'}
+                  onChange={() => handleSubTypeChange('image', 'pentominoes')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Pentominoes</span>
+              </label>
+            </div>
+          )}
 
           <label className="block mb-2">
             <input
               type="checkbox"
               name="audio"
-              checked={!!stimuli.audio}
-              onChange={(e) => handleStimuliChange(e as any)}
+              checked={stimuli.audio !== null}
+              onChange={handleStimuliChange}
               className="mr-2"
             />
             <span className="text-gray-700">Audio</span>
-            {stimuli.audio && (
-              <select
-                value={stimuli.audio}
-                onChange={handleAudioChange}
-                className="mt-1 p-2 border border-gray-300 rounded w-full"
-              >
-                <option value="">Select Sub-Type</option>
-                <option value="phoneme">Phoneme</option>
-                <option value="word">Word</option>
-                <option value="letter">Letter</option>
-                <option value="number">Number</option>
-              </select>
-            )}
           </label>
+          {stimuli.audio !== null && (
+            <div className="ml-6 mt-2">
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="audioType"
+                  value="phoneme"
+                  checked={stimuli.audio === 'phoneme'}
+                  onChange={() => handleSubTypeChange('audio', 'phoneme')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Phoneme</span>
+              </label>
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="audioType"
+                  value="word"
+                  checked={stimuli.audio === 'word'}
+                  onChange={() => handleSubTypeChange('audio', 'word')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Word</span>
+              </label>
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="audioType"
+                  value="letter"
+                  checked={stimuli.audio === 'letter'}
+                  onChange={() => handleSubTypeChange('audio', 'letter')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Letter</span>
+              </label>
+              <label className="block mb-2">
+                <input
+                  type="radio"
+                  name="audioType"
+                  value="number"
+                  checked={stimuli.audio === 'number'}
+                  onChange={() => handleSubTypeChange('audio', 'number')}
+                  className="mr-2"
+                />
+                <span className="text-gray-700">Number</span>
+              </label>
+            </div>
+          )}
         </div>
 
         <button onClick={onClose} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-200">
