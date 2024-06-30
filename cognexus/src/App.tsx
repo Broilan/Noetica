@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {Home, Tasks} from './pages'; 
-import {Navbar, Footer} from './components'; 
+import {Navbar, Footer, TestComponent} from './components'; 
 import { NBack } from './games';
 import './index.css'
 
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/tasks/n-back" element={<NBack />} />
+          <Route path="/test" element={<TestComponent/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
