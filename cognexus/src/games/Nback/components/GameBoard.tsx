@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Scoreboard from './Scoreboard';
-import ControlPanel from './ControlPanel';
+import ControlPanel from '../Settings/ControlPanel';
 import Guidelines from './Guidelines';
 import {Tooltip, TicketModal} from '../../../components';
 
@@ -8,8 +8,6 @@ import { FaGear } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
 import { IoStop } from "react-icons/io5";
 import { TbHelpTriangleFilled } from "react-icons/tb";
-import { IoMdStopwatch } from "react-icons/io";
-import { LuGauge } from "react-icons/lu";
 
 interface GameBoardProps {
   stimuli: {

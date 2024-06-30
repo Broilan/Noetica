@@ -1,7 +1,7 @@
 // src/nback.tsx
 import React, { useState } from 'react';
 import GameBoard from './components/GameBoard';
-import ControlPanel from './components/ControlPanel';
+import ControlPanel from './Settings/ControlPanel';
 
 const NBack: React.FC = () => {
   const [nBackLevel, setNBackLevel] = useState(1);
