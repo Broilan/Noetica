@@ -10,6 +10,8 @@ export class PentominoDrawer {
   private drawSquare(x: number, y: number, size: number, fillColor: string) {
     this.ctx.fillStyle = fillColor;
     this.ctx.fillRect(x, y, size, size);
+    this.ctx.strokeStyle = 'black';
+    this.ctx.strokeRect(x, y, size, size);
   }
 
   drawPentomino(

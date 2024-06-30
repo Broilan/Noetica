@@ -36,7 +36,7 @@ const TestComponent: React.FC = () => {
   
           // Draw static pentomino
           const pentominoSize = 20;
-          const pentominoType: PentominoType = 'T';
+          const pentominoType: PentominoType = 'W';
           pentominoDrawer.drawPentomino(500, 150, pentominoSize, pentominoType, 'green');
   
           // Clean up animation on component unmount
